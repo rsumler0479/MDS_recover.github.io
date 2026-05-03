@@ -1,163 +1,1851 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>MDS Recovery | Coming Soon</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-<!--===============================================================================================-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MDS Assets Recovery | Unclaimed Property Specialists</title>
+<meta name="description" content="MDS Assets Recovery helps individuals and businesses reclaim unclaimed property. Over $16M+ recovered, 2,000+ clients served across NY, NJ, MA, FL, PA, CA. No upfront fees — ever.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #05112a;
+    --navy-mid: #0a1f45;
+    --navy-light: #0f2d60;
+    --gold: #2563b0;
+    --gold-light: #4a90d9;
+    --gold-pale: #eaf3fc;
+    --steel: #1a4fa0;
+    --steel-light: #3a7bd5;
+    --steel-pale: #dceeff;
+    --white: #ffffff;
+    --off-white: #f0f5ff;
+    --gray-100: #dce8f7;
+    --gray-200: #b8d0ec;
+    --gray-400: #6a8db5;
+    --gray-600: #2d5080;
+    --gray-800: #05112a;
+    --text: #05112a;
+    --text-muted: #2d5080;
+    --radius: 4px;
+    --radius-lg: 10px;
+    --shadow: 0 4px 24px rgba(5,17,42,0.12);
+    --shadow-lg: 0 12px 48px rgba(5,17,42,0.18);
+    --transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text);
+    background: var(--white);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.25;
+    color: var(--navy);
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(2,12,30,0.97);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    padding: 0 2rem;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: var(--transition);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+
+  .nav-logo span { color: #4a90d9; }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: rgba(255,255,255,0.78);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: var(--transition);
+    cursor: pointer;
+  }
+
+  .nav-links a:hover { color: #4a90d9; }
+
+  .nav-cta {
+    background: var(--gold) !important;
+    color: #1a1a2e !important;
+    padding: 0.5rem 1.25rem;
+    border-radius: var(--radius);
+    font-weight: 600 !important;
+    font-size: 0.85rem !important;
+    transition: var(--transition) !important;
+  }
+
+  .nav-cta:hover { background: var(--gold-light) !important; transform: translateY(-1px); }
+
+  .nav-phone {
+    color: rgba(255,255,255,0.55) !important;
+    font-size: 0.82rem !important;
+  }
+
+  /* PAGE SYSTEM */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #020c1e 0%, #05112a 50%, #0a1f45 100%);
+    display: flex;
+    align-items: center;
+    padding: 120px 2rem 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    right: -10%;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
+  }
+
+  .hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .hero-eyebrow {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #4a90d9;
+    margin-bottom: 1.25rem;
+    padding: 0.3rem 0.85rem;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: var(--radius);
+  }
+
+  .hero h1 {
+    font-size: clamp(2.4rem, 4vw, 3.6rem);
+    color: var(--white);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    line-height: 1.18;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: #4a90d9;
+  }
+
+  .hero-sub {
+    font-size: 1.08rem;
+    color: rgba(255,255,255,0.72);
+    margin-bottom: 2.5rem;
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--gold-light);
+    color: var(--navy);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.85rem 1.75rem;
+    border-radius: var(--radius);
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    letter-spacing: 0.02em;
+  }
+
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,255,255,0.2); }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    color: rgba(255,255,255,0.85);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.85rem 1.75rem;
+    border-radius: var(--radius);
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.25);
+    cursor: pointer;
+    transition: var(--transition);
+  }
+
+  .btn-outline:hover { border-color: rgba(255,255,255,0.55); background: rgba(255,255,255,0.06); }
+
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .stat-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem 1.75rem;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    transition: var(--transition);
+  }
+
+  .stat-card:hover { background: rgba(255,255,255,0.09); border-color: rgba(255,255,255,0.22); transform: translateX(4px); }
+
+  .stat-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(255,255,255,0.1);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.4rem;
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #4a90d9;
+    line-height: 1;
+    margin-bottom: 0.2rem;
+  }
+
+  .stat-label {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.55);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 96px 2rem;
+  }
+
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-eyebrow {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #4a90d9;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    margin-bottom: 1.25rem;
+    color: var(--navy);
+  }
+
+  .section-lead {
+    font-size: 1.08rem;
+    color: var(--text-muted);
+    max-width: 640px;
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  /* WHAT WE DO */
+  .bg-off { background: var(--off-white); }
+  .bg-navy { background: #020c1e; }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .card {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    transition: var(--transition);
+  }
+
+  .card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); border-color: #4a90d9; }
+
+  .card-icon {
+    width: 52px;
+    height: 52px;
+    background: var(--steel-pale);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .card h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.75rem;
+    color: var(--navy);
+  }
+
+  .card p {
+    font-size: 0.93rem;
+    color: var(--text-muted);
+    line-height: 1.75;
+  }
+
+  /* PROPERTY TYPES */
+  .types-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.75rem;
+    margin-top: 2.5rem;
+  }
+
+  .type-pill {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius);
+    padding: 0.9rem 1.1rem;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--gray-800);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    transition: var(--transition);
+  }
+
+  .type-pill:hover { border-color: #4a90d9; color: var(--navy); background: var(--steel-pale); }
+
+  .type-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--gold-light);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* PROCESS */
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+    position: relative;
+  }
+
+  .step {
+    text-align: center;
+    padding: 2rem 1.5rem;
+  }
+
+  .step-num {
+    width: 56px;
+    height: 56px;
+    background: #1a4fa0;
+    color: #fff;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+    border: 2px solid #4a90d9;
+  }
+
+  .step h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.6rem;
+    color: var(--navy);
+  }
+
+  .step p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* TESTIMONIALS */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .testimonial {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    transition: var(--transition);
+  }
+
+  .testimonial:hover { border-color: rgba(255,255,255,0.22); background: rgba(255,255,255,0.10); }
+
+  .testimonial-quote {
+    font-size: 2rem;
+    color: #4a90d9;
+    line-height: 1;
+    margin-bottom: 0.75rem;
+    font-family: 'Playfair Display', serif;
+  }
+
+  .testimonial p {
+    font-size: 0.92rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.8;
+    font-style: italic;
+    margin-bottom: 1.25rem;
+  }
+
+  .testimonial-author {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #4a90d9;
+    font-style: normal;
+  }
+
+  .testimonial-role {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.4);
+    margin-top: 0.1rem;
+  }
+
+  /* STATES BADGE BAR */
+  .states-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1.5rem;
+  }
+
+  .state-badge {
+    background: #1a4fa0;
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    padding: 0.3rem 0.85rem;
+    border-radius: 2px;
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+
+  /* CTA SECTION */
+  .cta-section {
+    background: var(--steel-pale);
+    border-top: 1px solid var(--gray-200);
+    border-bottom: 1px solid var(--gray-200);
+    padding: 80px 2rem;
+    text-align: center;
+  }
+
+  .cta-section h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); margin-bottom: 1rem; }
+  .cta-section p { color: var(--text-muted); margin-bottom: 2rem; font-size: 1.05rem; max-width: 520px; margin-left: auto; margin-right: auto; }
+
+  /* ACCORDION FAQ */
+  .faq-list { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 0.75rem; }
+
+  .faq-item {
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: var(--transition);
+  }
+
+  .faq-item:hover { border-color: #4a90d9; }
+
+  button.faq-q {
+    width: 100%;
+    text-align: left;
+    background: var(--white);
+    border: none;
+    outline: none;
+  }
+  .faq-q {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.02rem;
+    font-weight: 600;
+    color: var(--navy);
+    background: var(--white);
+    user-select: none;
+    transition: var(--transition);
+    gap: 1rem;
+  }
+
+  .faq-q:hover { background: var(--steel-pale); }
+
+  .faq-toggle {
+    width: 26px;
+    height: 26px;
+    background: var(--gray-100);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--navy);
+    transition: var(--transition);
+  }
+
+  .faq-item.open .faq-toggle { background: var(--gold-light); color: var(--navy); transform: rotate(45deg); }
+
+  .faq-a {
+    display: none;
+    padding: 0 1.5rem 1.5rem;
+    background: var(--white);
+  }
+
+  .faq-item.open .faq-a { display: block; }
+
+  .faq-a p, .faq-a li {
+    font-size: 0.93rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 0.5rem;
+  }
+
+  .faq-a ul { padding-left: 1.25rem; }
+  .faq-a ul li { margin-bottom: 0.35rem; }
+
+  .faq-a .process-label {
+    font-weight: 600;
+    color: var(--navy);
+    font-size: 0.92rem;
+    margin-top: 0.75rem;
+  }
+
+  /* CONTACT FORM */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-top: 3rem;
+    align-items: start;
+  }
+
+  .contact-info h3 { font-size: 1.2rem; margin-bottom: 1rem; }
+
+  .contact-detail {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    margin-bottom: 1.25rem;
+    padding: 1.1rem 1.25rem;
+    background: var(--off-white);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--gray-200);
+  }
+
+  .contact-detail-icon {
+    width: 38px;
+    height: 38px;
+    background: #020c1e;
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .contact-detail-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+    margin-bottom: 0.2rem;
+  }
+
+  .contact-detail-value {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--navy);
+  }
+
+  .form-group { margin-bottom: 1.25rem; }
+
+  .form-group label {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--gray-600);
+    margin-bottom: 0.4rem;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    color: var(--text);
+    background: var(--white);
+    transition: var(--transition);
+    outline: none;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    border-color: #4a90d9;
+    box-shadow: 0 0 0 3px rgba(255,255,255,0.08);
+  }
+
+  .form-group textarea { resize: vertical; min-height: 120px; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .btn-submit {
+    width: 100%;
+    background: #020c1e;
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 0.95rem;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: var(--transition);
+    letter-spacing: 0.02em;
+  }
+
+  .btn-submit:hover { background: var(--navy-light); transform: translateY(-1px); box-shadow: var(--shadow); }
+
+  /* FOOTER */
+  footer {
+    background: #020c1e;
+    color: rgba(255,255,255,0.65);
+    padding: 64px 2rem 32px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .footer-brand .nav-logo { font-size: 1.35rem; display: block; margin-bottom: 1rem; }
+
+  .footer-tagline {
+    font-size: 0.88rem;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 1.25rem;
+    max-width: 280px;
+  }
+
+  .footer-states {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.75rem;
+  }
+
+  .footer-state {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: #4a90d9;
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 0.18rem 0.5rem;
+    border-radius: 2px;
+  }
+
+  .footer-col h4 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #4a90d9;
+    margin-bottom: 1rem;
+  }
+
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 0.6rem; }
+
+  .footer-col ul li a {
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+
+  .footer-col ul li a:hover { color: #4a90d9; }
+
+  .footer-bottom {
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.35);
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  /* ABOUT PAGE SPECIFIC */
+  .about-hero {
+    background: linear-gradient(135deg, #020c1e 0%, #0a1f45 100%);
+    padding: 160px 2rem 100px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(201,168,76,0.07) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .about-hero h1 { color: var(--white); font-size: clamp(2.2rem, 4vw, 3.4rem); margin-bottom: 1.25rem; }
+  .about-hero p { color: rgba(255,255,255,0.65); font-size: 1.1rem; max-width: 600px; margin: 0 auto; font-weight: 300; }
+
+  .about-stats-bar {
+    background: var(--steel-pale);
+    border-top: 1px solid var(--gray-200);
+    border-bottom: 1px solid var(--gray-200);
+    padding: 2.5rem 2rem;
+  }
+
+  .about-stats-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .about-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  .about-stat-label {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  .about-stat-divider {
+    border-right: 1px solid var(--gray-200);
+  }
+
+  /* PAGE HERO (for support) */
+  .page-hero {
+    background: linear-gradient(135deg, #020c1e 0%, #0a1f45 100%);
+    padding: 140px 2rem 80px;
+    text-align: center;
+  }
+
+  .page-hero h1 { color: var(--white); font-size: clamp(2rem, 3.5vw, 3rem); margin-bottom: 1rem; }
+  .page-hero p { color: rgba(255,255,255,0.65); font-size: 1.05rem; max-width: 560px; margin: 0 auto; font-weight: 300; }
+
+  /* RESPONSIVE */
+  /* ── TABLET (≤900px) ───────────────────────────────────────────── */
+  @media (max-width: 900px) {
+    .hero-right { display: none; }
+    .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .about-stats-inner { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .about-stat-divider { border-right: none; }
+    .cards-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .process-steps { grid-template-columns: repeat(2, 1fr); }
+    .testimonials-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── MOBILE (≤600px) ───────────────────────────────────────────── */
+  @media (max-width: 600px) {
+
+    /* Nav */
+    nav { padding: 0 1rem; height: 60px; }
+    .nav-links { display: none; }
+    .no-fee-banner { font-size: 0.75rem; padding: 0.65rem 1rem; }
+    #hamburger { display: flex !important; }
+
+    /* Mobile dropdown menu */
+    .nav-links.open {
+      display: flex !important;
+      flex-direction: column !important;
+      position: fixed !important;
+      top: 100px !important;
+      left: 0 !important;
+      right: 0 !important;
+      background: rgba(2,12,30,0.98) !important;
+      padding: 1.5rem !important;
+      gap: 0 !important;
+      z-index: 99 !important;
+      border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+    }
+    .nav-links.open li { border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .nav-links.open li:last-child { border-bottom: none; }
+    .nav-links.open a {
+      display: block !important;
+      padding: 1rem 0.5rem !important;
+      font-size: 1rem !important;
+      letter-spacing: 0.02em !important;
+      text-transform: none !important;
+      color: rgba(255,255,255,0.85) !important;
+    }
+    .nav-links.open .nav-cta {
+      background: #ffffff !important;
+      color: #05112a !important;
+      text-align: center !important;
+      border-radius: 4px !important;
+      margin-top: 0.75rem !important;
+      padding: 0.9rem !important;
+    }
+
+    /* Hero */
+    .hero { padding: 100px 1.25rem 60px; min-height: auto; }
+    .hero h1 { font-size: 2rem; }
+    .hero-sub { font-size: 0.96rem; }
+    .hero-actions { flex-direction: column; gap: 0.75rem; }
+    .hero-actions .btn-primary,
+    .hero-actions .btn-outline { width: 100%; text-align: center; justify-content: center; }
+    .hero-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .hero-right {
+      display: flex !important;
+      flex-direction: row !important;
+      overflow-x: auto !important;
+      gap: 0.75rem !important;
+      padding-bottom: 0.5rem !important;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .hero-right::-webkit-scrollbar { display: none; }
+    .stat-card {
+      min-width: 200px !important;
+      flex-shrink: 0 !important;
+      padding: 1rem 1.25rem !important;
+    }
+    .stat-num { font-size: 1.5rem !important; }
+    .stat-label { font-size: 0.75rem !important; }
+
+    /* Sections */
+    section { padding: 56px 1.25rem; }
+    .section-title { font-size: 1.6rem; }
+    .section-lead { font-size: 0.96rem; }
+
+    /* Cards */
+    .cards-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .card { padding: 1.5rem; }
+
+    /* Process timeline — stack vertically on mobile */
+    .process-steps,
+    div[style*="grid-template-columns:repeat(4,1fr)"] {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 1.5rem !important;
+    }
+    .timeline-line { display: none !important; }
+
+    /* Type pills */
+    .types-grid { grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+    .type-pill { font-size: 0.8rem; padding: 0.7rem 0.75rem; }
+
+    /* Stats bar */
+    div[style*="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))"] {
+      grid-template-columns: 1fr 1fr !important;
+      gap: 1.5rem !important;
+    }
+    div[style*="border-right:1px solid rgba(200,169,74,0.2)"],
+    div[style*="border-right:1px solid rgba(255,255,255,0.2)"] {
+      border-right: none !important;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding-bottom: 1.25rem;
+    }
+
+    /* About hero */
+    .about-hero { padding: 110px 1.25rem 60px; }
+    .about-hero h1 { font-size: 1.9rem; }
+    .about-hero p { font-size: 0.96rem; }
+    .about-stats-inner { grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .about-stat-num { font-size: 1.8rem; }
+
+    /* Page hero */
+    .page-hero { padding: 110px 1.25rem 60px; }
+    .page-hero h1 { font-size: 1.9rem; }
+
+    /* Testimonials / Google reviews */
+    .testimonials-grid { grid-template-columns: 1fr; }
+    div[style*="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))"] {
+      grid-template-columns: 1fr !important;
+    }
+
+    /* Google badge */
+    div[style*="border-radius:50px"] { flex-direction: column; gap: 0.5rem; padding: 1rem; }
+
+    /* Google review CTA buttons */
+    div[style*="display:flex; gap:1rem; justify-content:center"] {
+      flex-direction: column !important;
+      align-items: stretch !important;
+    }
+    div[style*="display:flex; gap:1rem; justify-content:center"] a {
+      text-align: center;
+      justify-content: center;
+    }
+
+    /* CTA section */
+    .cta-section { padding: 56px 1.25rem; }
+    .cta-section h2 { font-size: 1.6rem; }
+    .cta-section div[style*="display: flex"] { flex-direction: column; align-items: stretch; }
+    .cta-section .btn-primary,
+    .cta-section .btn-outline { width: 100%; text-align: center; justify-content: center; }
+
+    /* Contact page */
+    .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .contact-detail { padding: 0.9rem 1rem; }
+
+    /* FAQ */
+    button.faq-q {
+    width: 100%;
+    text-align: left;
+    background: var(--white);
+    border: none;
+    outline: none;
+  }
+  .faq-q { font-size: 0.93rem; padding: 1rem 1.1rem; }
+    .faq-a { padding: 0 1.1rem 1.1rem; }
+
+    /* Footer */
+    .footer-grid { grid-template-columns: 1fr; gap: 1.75rem; }
+    .footer-bottom { flex-direction: column; text-align: center; gap: 0.5rem; }
+    .footer-tagline { max-width: 100%; }
+    .footer-states { justify-content: flex-start; }
+
+    /* Nav logo text size */
+    .nav-logo span { font-size: 0.95rem !important; }
+    nav img { height: 38px !important; width: 38px !important; }
+
+    /* State badges */
+    .states-bar { gap: 0.4rem; }
+    .state-badge { font-size: 0.72rem; padding: 0.22rem 0.6rem; }
+
+    /* About mission section */
+    div[style*="max-width: 760px"] { padding: 0; }
+
+    /* Sticky CTA padding for mobile bottom bar */
+    body { padding-bottom: 68px; }
+  }
+
+  @media (max-width: 380px) {
+    .hero h1 { font-size: 1.75rem; }
+    .stat-card { min-width: 170px !important; }
+    .stat-num { font-size: 1.3rem !important; }
+    .types-grid { grid-template-columns: 1fr; }
+    .about-stats-inner { grid-template-columns: 1fr 1fr; }
+    .about-stat-num { font-size: 1.6rem; }
+    .section-title { font-size: 1.45rem; }
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-up { animation: fadeUp 0.7s cubic-bezier(0.4,0,0.2,1) both; }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.22s; }
+  .delay-3 { animation-delay: 0.34s; }
+  .delay-4 { animation-delay: 0.46s; }
+  .delay-5 { animation-delay: 0.58s; }
+
+  /* DIVIDER */
+  .gold-divider {
+    width: 48px;
+    height: 3px;
+    background: var(--gold-light);
+    border-radius: 2px;
+    margin: 1rem 0 1.5rem;
+  }
+
+  /* NOTICE BANNER */
+  .no-fee-banner {
+    background: #020c1e;
+    color: var(--white);
+    text-align: center;
+    padding: 0.85rem 2rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+  }
+
+  .no-fee-banner span { color: #4a90d9; font-weight: 600; }
+
+</style>
 </head>
 <body>
-	
-	
-	<div class="bg-g1 size1 flex-w flex-col-c-sb p-l-15 p-r-15 p-t-55 p-b-35 respon1">
-		<span></span>
-		<div class="flex-col-c p-t-50 p-b-50">
-			<h3 class="l1-txt1 txt-center p-b-10">
-				MDS Recovery | Coming Soon
-			</h3>
-<br>
-			<p class="txt-center l1-txt2 p-b-60">
-				Our website is under construction
-			</p>
-			<p class="txt-center l1-txt2 p-b-60">
-				Email Us: info@mds-recovery.com
-			</p>
-			<p class="txt-center l1-txt2 p-b-60">
-				Give Us A Call: (800) 637-5692
-			</p>
+
+<!-- TOP NOTICE -->
+<div class="no-fee-banner">
+  <span>No upfront fees — ever.</span> You only pay when we successfully recover your funds. &nbsp;·&nbsp; Call us: <span>(800) 637-5692</span>
+</div>
+
+<!-- NAV -->
+<nav id="main-nav" style="top: 40px;">
+  <a class="nav-logo" href="javascript:void(0)" onclick="showPage('home')" style="display:flex;align-items:center;gap:0.6rem;"><img src="data:image/jpeg;base64,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" alt="MDS Assets Recovery Logo" style="height:46px;width:46px;object-fit:cover;border-radius:50%;"><span style="font-family:Playfair Display,serif;font-size:1.1rem;font-weight:700;color:#fff;letter-spacing:0.02em;">MDS <span style="color:#4a90d9;">Assets Recovery</span></span></a>
+  <ul class="nav-links" id="nav-menu">
+    <li><a href="javascript:void(0)" onclick="showPage('home');closeMenu()">Home</a></li>
+    <li><a href="javascript:void(0)" onclick="showPage('about');closeMenu()">About</a></li>
+    <li><a href="javascript:void(0)" onclick="showPage('support');closeMenu()">FAQ</a></li>
+    <li><a href="javascript:void(0)" onclick="showPage('contact');closeMenu()" class="nav-cta">Free Recovery Search</a></li>
+    <li><a href="tel:8006375692" class="nav-phone">☎ (800) 637-5692</a></li>
+  </ul>
+  <button id="hamburger" onclick="toggleMenu()" style="display:none; background:none; border:none; cursor:pointer; padding:0.5rem; flex-direction:column; gap:5px; align-items:center; justify-content:center;">
+    <span style="display:block; width:22px; height:2px; background:#fff; border-radius:2px; transition:all 0.3s;"></span>
+    <span style="display:block; width:22px; height:2px; background:#fff; border-radius:2px; transition:all 0.3s;"></span>
+    <span style="display:block; width:22px; height:2px; background:#fff; border-radius:2px; transition:all 0.3s;"></span>
+  </button>
+</nav>
+
+<!-- ═══════════════════════════════════════ -->
+<!--  HOME PAGE                             -->
+<!-- ═══════════════════════════════════════ -->
+<div id="page-home" class="page active">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <span class="hero-eyebrow fade-up">Unclaimed Property Recovery</span>
+        <h1 class="fade-up delay-1">Recover the Money<br><em>That's Rightfully Yours</em></h1>
+        <p class="hero-sub fade-up delay-2">We guide you through every step of the unclaimed property recovery process — with transparency, expertise, and no upfront cost to you.</p>
+        <div class="hero-actions fade-up delay-3">
+          <button class="btn-primary" onclick="showPage('contact')">Start Your Free Recovery Search →</button>
+          <button class="btn-outline" onclick="showPage('about')">Our Story</button>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="stat-card fade-up delay-2">
+          <div class="stat-icon">💰</div>
+          <div>
+            <div class="stat-num">$16M+</div>
+            <div class="stat-label">Successfully recovered for our clients</div>
+          </div>
+        </div>
+        <div class="stat-card fade-up delay-3">
+          <div class="stat-icon">👥</div>
+          <div>
+            <div class="stat-num">2,000+</div>
+            <div class="stat-label">Individuals and businesses helped</div>
+          </div>
+        </div>
+        <div class="stat-card fade-up delay-4">
+          <div class="stat-icon">🗺️</div>
+          <div>
+            <div class="stat-num">6+ States</div>
+            <div class="stat-label">NY · NJ · MA · FL · PA · CA & expanding</div>
+          </div>
+        </div>
+        <div class="stat-card fade-up delay-5">
+          <div class="stat-icon">✅</div>
+          <div>
+            <div class="stat-num">$0</div>
+            <div class="stat-label">Upfront fees — you only pay on success</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE PROBLEM -->
+  <section>
+    <div class="section-inner">
+      <span class="section-eyebrow">The Problem</span>
+      <h2 class="section-title">Billions Are Sitting Unclaimed — Some of It May Be Yours</h2>
+      <div class="gold-divider"></div>
+      <p class="section-lead">There are currently over <strong>$100 billion</strong> in unclaimed assets held by state governments and financial institutions across the U.S. These funds belong to real people — and most don't even know they exist.</p>
+      <p class="section-lead" style="margin-top: 1rem;">MDS Assets Recovery has already helped over 2,000 clients across New York, New Jersey, Massachusetts, Florida, Pennsylvania, California, and beyond — recovering more than $16 million+ in funds that might otherwise have stayed lost forever.</p>
+
+      <div class="types-grid" style="margin-top: 3rem;">
+        <div class="type-pill"><span class="type-dot"></span>Bank accounts & CDs</div>
+        <div class="type-pill"><span class="type-dot"></span>Uncashed payroll checks</div>
+        <div class="type-pill"><span class="type-dot"></span>Stocks, bonds & mutual funds</div>
+        <div class="type-pill"><span class="type-dot"></span>Insurance benefits & policies</div>
+        <div class="type-pill"><span class="type-dot"></span>Estate proceeds</div>
+        <div class="type-pill"><span class="type-dot"></span>Court & legal settlements</div>
+        <div class="type-pill"><span class="type-dot"></span>Security & utility deposits</div>
+        <div class="type-pill"><span class="type-dot"></span>Dividend & royalty payments</div>
+        <div class="type-pill"><span class="type-dot"></span>Trust distributions</div>
+        <div class="type-pill"><span class="type-dot"></span>Annuities & pension funds</div>
+        <div class="type-pill"><span class="type-dot"></span>Traveler's checks</div>
+        <div class="type-pill"><span class="type-dot"></span>Customer overpayments</div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ANIMATED STATS BAR -->
+  <div style="background: linear-gradient(90deg, #020c1e 0%, #05112a 50%, #0a1f45 100%); padding: 3.5rem 2rem; border-top: 1px solid rgba(255,255,255,0.12); border-bottom: 1px solid rgba(255,255,255,0.12);">
+    <div style="max-width:1100px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:2rem; text-align:center;">
+      <div>
+        <div class="count-up" data-target="16" data-prefix="$" data-suffix="M+" style="font-family:'Playfair Display',serif; font-size:2.8rem; font-weight:700; color:#ffffff; line-height:1;">$16M+</div>
+        <div style="font-size:0.82rem; color:rgba(255,255,255,0.55); margin-top:0.4rem; letter-spacing:0.06em; text-transform:uppercase;">Total Recovered</div>
+      </div>
+      <div style="border-left:1px solid rgba(255,255,255,0.12); border-right:1px solid rgba(255,255,255,0.12);">
+        <div class="count-up" data-target="2000" data-suffix="+" style="font-family:'Playfair Display',serif; font-size:2.8rem; font-weight:700; color:#ffffff; line-height:1;">2,000+</div>
+        <div style="font-size:0.82rem; color:rgba(255,255,255,0.55); margin-top:0.4rem; letter-spacing:0.06em; text-transform:uppercase;">Clients Served</div>
+      </div>
+      <div style="border-right:1px solid rgba(255,255,255,0.12);">
+        <div class="count-up" data-target="6" data-suffix="+ States" style="font-family:'Playfair Display',serif; font-size:2.8rem; font-weight:700; color:#ffffff; line-height:1;">6+ States</div>
+        <div style="font-size:0.82rem; color:rgba(255,255,255,0.55); margin-top:0.4rem; letter-spacing:0.06em; text-transform:uppercase;">States Covered</div>
+      </div>
+      <div>
+        <div style="font-family:'Playfair Display',serif; font-size:2.8rem; font-weight:700; color:#ffffff; line-height:1;">$0</div>
+        <div style="font-size:0.82rem; color:rgba(255,255,255,0.55); margin-top:0.4rem; letter-spacing:0.06em; text-transform:uppercase;">Upfront Fees — Ever</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <section class="bg-off">
+    <div class="section-inner">
+      <span class="section-eyebrow">The Process</span>
+      <h2 class="section-title">Simple. Transparent. Risk-Free.</h2>
+      <div class="gold-divider"></div>
+      <p class="section-lead">We handle the complexity so you don't have to. Here's how a typical recovery unfolds:</p>
+      <!-- VISUAL TIMELINE -->
+      <div style="position:relative; margin-top:3.5rem;">
+        <!-- connector line desktop -->
+        <div style="position:absolute; top:36px; left:calc(12.5% + 16px); right:calc(12.5% + 16px); height:2px; background:linear-gradient(90deg, #ffffff, #3a7bd5, #ffffff, #3a7bd5); opacity:0.35; z-index:0;" class="timeline-line"></div>
+        <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; position:relative; z-index:1;">
+
+          <div style="text-align:center; padding:0 0.5rem;">
+            <div style="width:72px; height:72px; background:linear-gradient(135deg,#1a1a2e,#22223b); border:2px solid #ffffff; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 1.25rem; box-shadow:0 0 0 6px rgba(255,255,255,0.08);">
+              <span style="font-size:1.6rem;">🔍</span>
+            </div>
+            <div style="display:inline-block; background:#ffffff; color:#05112a; font-size:0.68rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:0.2rem 0.65rem; border-radius:2px; margin-bottom:0.6rem;">Step 1</div>
+            <h3 style="font-size:1rem; color:#05112a; margin-bottom:0.5rem;">We Identify Your Funds</h3>
+            <p style="font-size:0.85rem; color:#50506a; line-height:1.7;">Our team searches state databases and financial records to locate every dollar owed to you — often surfacing funds you never knew existed.</p>
+          </div>
+
+          <div style="text-align:center; padding:0 0.5rem;">
+            <div style="width:72px; height:72px; background:linear-gradient(135deg,#1a1a2e,#22223b); border:2px solid #3a7bd5; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 1.25rem; box-shadow:0 0 0 6px rgba(58,123,213,0.1);">
+              <span style="font-size:1.6rem;">📋</span>
+            </div>
+            <div style="display:inline-block; background:#3a7bd5; color:#fff; font-size:0.68rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:0.2rem 0.65rem; border-radius:2px; margin-bottom:0.6rem;">Step 2</div>
+            <h3 style="font-size:1rem; color:#05112a; margin-bottom:0.5rem;">You Review & Approve</h3>
+            <p style="font-size:0.85rem; color:#50506a; line-height:1.7;">We walk you through our findings and your service agreement — with full transparency — before any work begins. You stay in complete control.</p>
+          </div>
+
+          <div style="text-align:center; padding:0 0.5rem;">
+            <div style="width:72px; height:72px; background:linear-gradient(135deg,#1a1a2e,#22223b); border:2px solid #ffffff; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 1.25rem; box-shadow:0 0 0 6px rgba(255,255,255,0.08);">
+              <span style="font-size:1.6rem;">📨</span>
+            </div>
+            <div style="display:inline-block; background:#ffffff; color:#05112a; font-size:0.68rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:0.2rem 0.65rem; border-radius:2px; margin-bottom:0.6rem;">Step 3</div>
+            <h3 style="font-size:1rem; color:#05112a; margin-bottom:0.5rem;">We Handle Everything</h3>
+            <p style="font-size:0.85rem; color:#50506a; line-height:1.7;">We manage all documentation, government correspondence, and follow-up. You handle 10% — a simple form and proof of identity when required.</p>
+          </div>
+
+          <div style="text-align:center; padding:0 0.5rem;">
+            <div style="width:72px; height:72px; background:linear-gradient(135deg,#1a1a2e,#22223b); border:2px solid #3a7bd5; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 1.25rem; box-shadow:0 0 0 6px rgba(58,123,213,0.1);">
+              <span style="font-size:1.6rem;">💰</span>
+            </div>
+            <div style="display:inline-block; background:#3a7bd5; color:#fff; font-size:0.68rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:0.2rem 0.65rem; border-radius:2px; margin-bottom:0.6rem;">Step 4</div>
+            <h3 style="font-size:1rem; color:#05112a; margin-bottom:0.5rem;">You Receive Your Funds</h3>
+            <p style="font-size:0.85rem; color:#50506a; line-height:1.7;">Once approved, funds are delivered directly to you — via ACH transfer, check, or your preferred method. We only get paid when you do.</p>
+          </div>
+
+        </div>
+      </div>
+      <style>.timeline-line { display:block; } @media(max-width:700px){.timeline-line{display:none;} }</style>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section>
+    <div class="section-inner">
+      <span class="section-eyebrow">Why MDS Assets Recovery</span>
+      <h2 class="section-title">We Go Beyond the Standard</h2>
+      <div class="gold-divider"></div>
+      <p class="section-lead">Traditional recovery methods leave billions on the table. We bring expertise, technology, and genuine care to every client relationship.</p>
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-icon">🤝</div>
+          <h3>Friendly & Accessible</h3>
+          <p>You choose how we communicate — email, text, or phone. Our team is available around the clock and will always keep you fully informed.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🔍</div>
+          <h3>Fully Transparent</h3>
+          <p>No hidden fees, no surprises. Your service agreement spells out everything clearly before we begin — so you always know exactly where you stand.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🏋️</div>
+          <h3>We Do 90% of the Work</h3>
+          <p>Our team handles the research, filing, follow-up, and agency correspondence. Your only role is completing a simple form and providing proof of identity when required by the government agency — that's it.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">💻</div>
+          <h3>Proprietary Technology</h3>
+          <p>We use custom-built applications developed specifically for MDS Assets Recovery to maximize findings and keep your personal data secure.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">⚡</div>
+          <h3>No Upfront Cost</h3>
+          <p>Our service is completely risk-free. You pay nothing until we successfully recover your property — period.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🗺️</div>
+          <h3>Multi-State Coverage</h3>
+          <p>We actively recover funds in New York, New Jersey, Massachusetts, Florida, Pennsylvania, and continue expanding nationwide.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">📋</div>
+          <h3>You're in Control</h3>
+          <p>You decide how to receive your recovered property. Options include ACH transfer, check, and more — whatever works best for your situation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
 
 
-			<!-- <div class="flex-w flex-c cd100 p-b-82">
-				<div class="flex-col-c-m size2 how-countdown">
-					<span class="l1-txt3 p-b-9 days">35</span>
-					<span class="s1-txt1">Days</span>
-				</div>
+  <!-- GOOGLE REVIEWS SECTION -->
+  <section style="background: linear-gradient(135deg, #020c1e 0%, #05112a 50%, #0a1f45 100%); padding: 96px 2rem;">
+    <div style="max-width:1100px; margin:0 auto;">
+      <div style="text-align:center; margin-bottom:3rem;">
+        <span style="display:inline-block; font-size:0.75rem; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; color:#4a90d9; margin-bottom:0.75rem;">Verified Client Reviews</span>
+        <h2 style="font-family:'Playfair Display',serif; font-size:clamp(1.8rem,3vw,2.6rem); color:#fff; margin-bottom:1rem;">Trusted by Clients Across the U.S.</h2>
+        <div style="width:48px; height:3px; background:#4a90d9; border-radius:2px; margin:0 auto 1.5rem;"></div>
+        <div style="display:inline-flex; align-items:center; gap:1rem; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); border-radius:50px; padding:0.75rem 1.75rem; margin-bottom:0.5rem;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+          <div style="display:flex; align-items:center; gap:0.4rem;">
+            <span style="font-size:1.5rem; font-weight:700; color:#fff; font-family:'Playfair Display',serif;">5.0</span>
+            <div><div style="color:#FFC107; font-size:1rem;">★★★★★</div><div style="font-size:0.72rem; color:rgba(255,255,255,0.5);">18 Google Reviews</div></div>
+          </div>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.5rem; margin-bottom:3rem;">
+        <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.12); border-radius:10px; padding:1.75rem;" onmouseover="this.style.background='rgba(255,255,255,0.09)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">
+          <div style="display:flex; justify-content:space-between; margin-bottom:1rem;"><div style="color:#FFC107;">★★★★★</div><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg></div>
+          <p style="font-size:0.92rem; color:rgba(255,255,255,0.78); line-height:1.8; font-style:italic; margin-bottom:1.25rem;">Professional, communicative, and truly committed to helping me recover unclaimed property with ease. What stood out most was their transparency throughout the process.</p>
+          <div style="font-size:0.85rem; font-weight:600; color:#fff;">Verified Google Reviewer</div>
+          <div style="font-size:0.75rem; color:rgba(255,255,255,0.4); margin-top:0.15rem;">Google Review</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.12); border-radius:10px; padding:1.75rem;" onmouseover="this.style.background='rgba(255,255,255,0.09)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">
+          <div style="display:flex; justify-content:space-between; margin-bottom:1rem;"><div style="color:#FFC107;">★★★★★</div><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg></div>
+          <p style="font-size:0.92rem; color:rgba(255,255,255,0.78); line-height:1.8; font-style:italic; margin-bottom:1.25rem;">It's like getting free money! MDS Assets Recovery sent me a list of people who owed me money I had entirely forgotten about. I got over $2,000. Would have lost it without their services.</p>
+          <div style="font-size:0.85rem; font-weight:600; color:#fff;">Verified Google Reviewer</div>
+          <div style="font-size:0.75rem; color:rgba(255,255,255,0.4); margin-top:0.15rem;">Google Review</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.12); border-radius:10px; padding:1.75rem;" onmouseover="this.style.background='rgba(255,255,255,0.09)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">
+          <div style="display:flex; justify-content:space-between; margin-bottom:1rem;"><div style="color:#FFC107;">★★★★★</div><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg></div>
+          <p style="font-size:0.92rem; color:rgba(255,255,255,0.78); line-height:1.8; font-style:italic; margin-bottom:1.25rem;">Fortunate to find MDS. They turned out to be an efficient asset recovery firm. Michael was timely and available. I received all the funds owed to me. I look forward to using their services again.</p>
+          <div style="font-size:0.85rem; font-weight:600; color:#fff;">Eric Calian, D.D.S.</div>
+          <div style="font-size:0.75rem; color:rgba(255,255,255,0.4); margin-top:0.15rem;">Google Review · Calian Dental Group</div>
+        </div>
+      </div>
+      <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+        <a href="https://www.google.com/search?q=MDS+Assets+Recovery+LLC+New+York+reviews" target="_blank" style="display:inline-flex; align-items:center; gap:0.6rem; background:#fff; color:#05112a; font-family:'DM Sans',sans-serif; font-size:0.88rem; font-weight:600; padding:0.8rem 1.6rem; border-radius:4px; text-decoration:none;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+          Read All 18 Google Reviews
+        </a>
+        <a href="https://www.google.com/search?q=MDS+Assets+Recovery+LLC+New+York#lrd=0x0:0x0,3" target="_blank" style="display:inline-flex; align-items:center; gap:0.6rem; background:transparent; color:rgba(255,255,255,0.85); font-family:'DM Sans',sans-serif; font-size:0.88rem; font-weight:500; padding:0.8rem 1.6rem; border-radius:4px; text-decoration:none; border:1px solid rgba(255,255,255,0.25);" onmouseover="this.style.borderColor='rgba(255,255,255,0.55)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.25)'">
+          ✏️ Leave Us a Review
+        </a>
+      </div>
+    </div>
+  </section>
 
-				<div class="flex-col-c-m size2 how-countdown">
-					<span class="l1-txt3 p-b-9 hours">17</span>
-					<span class="s1-txt1">Hours</span>
-				</div>
 
-				<div class="flex-col-c-m size2 how-countdown">
-					<span class="l1-txt3 p-b-9 minutes">50</span>
-					<span class="s1-txt1">Minutes</span>
-				</div>
+</div><!-- end home -->
 
-				<div class="flex-col-c-m size2 how-countdown">
-					<span class="l1-txt3 p-b-9 seconds">39</span>
-					<span class="s1-txt1">Seconds</span>
-				</div>
-			</div> -->
 
-			<!-- <button class="flex-c-m s1-txt2 size3 how-btn"  data-toggle="modal" data-target="#subscribe">
-				Follow us for update now!
-			</button> -->
-		</div>
+<!-- ═══════════════════════════════════════ -->
+<!--  ABOUT PAGE                            -->
+<!-- ═══════════════════════════════════════ -->
+<div id="page-about" class="page">
 
-		<!-- <span class="s1-txt3 txt-center">
-			@ 2017 Coming Soon Template. Designed by Colorlib
-		</span>
-		 -->
-	</div>
+  <div class="about-hero">
+    <span class="hero-eyebrow">Our Story</span>
+    <h1>Money Found Is Money Owed.</h1>
+    <p>We built MDS Assets Recovery around a simple belief: if funds belong to you, you deserve a straightforward, transparent path to reclaim them.</p>
+  </div>
 
-	<!-- Modal Login -->
-	<!-- <div class="modal fade" id="subscribe" tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-dialog" role="document" data-dismiss="modal">
-			<div class="modal-subscribe where1-parent bg0 bor2 size4 p-t-54 p-b-100 p-l-15 p-r-15">
-				<button class="btn-close-modal how-btn2 fs-26 where1 trans-04">
-					<i class="zmdi zmdi-close"></i>
-				</button>
+  <!-- STATS BAR -->
+  <div class="about-stats-bar">
+    <div class="about-stats-inner">
+      <div class="about-stat-divider">
+        <div class="about-stat-num">$16M+</div>
+        <div class="about-stat-label">Total Funds Recovered</div>
+      </div>
+      <div class="about-stat-divider">
+        <div class="about-stat-num">2,000+</div>
+        <div class="about-stat-label">Clients Served</div>
+      </div>
+      <div class="about-stat-divider">
+        <div class="about-stat-num">6+</div>
+        <div class="about-stat-label">States Active</div>
+      </div>
+      <div>
+        <div class="about-stat-num">$0</div>
+        <div class="about-stat-label">Upfront Fees — Ever</div>
+      </div>
+    </div>
+  </div>
 
-				<div class="wsize1 m-lr-auto">
-					<h3 class="m1-txt1 txt-center p-b-36">
-						<span class="bor1 p-b-6">Subscribe</span>
-					</h3>
+  <!-- MISSION -->
+  <section>
+    <div class="section-inner" style="max-width: 760px;">
+      <div>
+        <span class="section-eyebrow">Our Mission</span>
+        <h2 class="section-title">A New Kind of Unclaimed Property Firm</h2>
+        <div class="gold-divider"></div>
+        <p style="color: var(--text-muted); line-height: 1.85; margin-bottom: 1rem;">At MDS Assets Recovery, our mission is simple: help people reclaim what's theirs — with transparency, care, and expertise.</p>
+        <p style="color: var(--text-muted); line-height: 1.85; margin-bottom: 1rem;">To date, we've recovered over <strong>$16 million+</strong> for more than <strong>2,000 clients</strong> spanning New York, New Jersey, Massachusetts, Florida, Pennsylvania, California, and beyond.</p>
+        <p style="color: var(--text-muted); line-height: 1.85;">We serve individual claimants, healthcare professionals, financial advisors, and businesses of every size — treating every client with the same level of dedication and attention regardless of claim size.</p>
+      </div>
+</div>
+    </div>
+  </section>
 
-					<p class="m1-txt2 txt-center p-b-40">
-						Follow us for update now!
-					</p>
 
-					<form class="contact100-form validate-form">
-						<div class="wrap-input100 m-b-10 validate-input" data-validate = "Name is required">
-							<input class="s1-txt4 placeholder0 input100" type="text" name="name" placeholder="Name">
-							<span class="focus-input100"></span>
-						</div>
 
-						<div class="wrap-input100 m-b-20 validate-input" data-validate = "Email is required: ex@abc.xyz">
-							<input class="s1-txt4 placeholder0 input100" type="text" name="email" placeholder="Email">
-							<span class="focus-input100"></span>
-						</div>
+  <!-- CTA -->
+  <div class="cta-section">
+    <span class="section-eyebrow">Have Questions?</span>
+    <h2>We'd Love to Hear From You</h2>
+    <p>Reach out any time — we typically respond within one business day.</p>
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+      <button class="btn-primary" onclick="showPage('contact')" style="background: #020c1e; color: var(--white);">Send Us a Message →</button>
+      <a href="tel:8006375692" class="btn-outline" style="color: var(--navy); border-color: var(--navy);">☎ (800) 637-5692</a>
+    </div>
+  </div>
 
-						<div class="w-full">
-							<button class="flex-c-m s1-txt2 size5 how-btn1 trans-04">
-								Get Updates
-							</button>
-						</div>
-					</form>
+</div><!-- end about -->
 
-					<p class="s1-txt5 txt-center wsize2 m-lr-auto p-t-20">
-						And don’t worry, we hate spam too! You can unsubcribe at anytime.
-					</p>
-				</div>
-			</div>
 
-		</div>
-	</div> -->
+<!-- ═══════════════════════════════════════ -->
+<!--  SUPPORT / FAQ PAGE                    -->
+<!-- ═══════════════════════════════════════ -->
+<div id="page-support" class="page">
 
-	
+  <section style="padding-top: 120px;">
+    <div class="section-inner" style="max-width: 780px;">
 
-<!--===============================================================================================-->	
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/countdowntime/moment.min.js"></script>
-	<script src="vendor/countdowntime/moment-timezone.min.js"></script>
-	<script src="vendor/countdowntime/moment-timezone-with-data.min.js"></script>
-	<script src="vendor/countdowntime/countdowntime.js"></script>
-	<script>
-		$('.cd100').countdown100({
-			// Set Endtime here
-			// Endtime must be > current time
-			endtimeYear: 0,
-			endtimeMonth: 0,
-			endtimeDate: 35,
-			endtimeHours: 18,
-			endtimeMinutes: 0,
-			endtimeSeconds: 0,
-			timeZone: "" 
-			// ex:  timeZone: "America/New_York", can be empty
-			// go to " http://momentjs.com/timezone/ " to get timezone
-		});
-	</script>
-<!--===============================================================================================-->
-	<script src="vendor/tilt/tilt.jquery.min.js"></script>
-	<script >
-		$('.js-tilt').tilt({
-			scale: 1.1
-		})
-	</script>
-<!--===============================================================================================-->
-	<script src="js/main.js"></script>
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)" type="button">
+            Why would I have unclaimed property owed to me?
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-a">
+            <p>Property goes unclaimed most often because contact information changes and the organization holding your funds is unable to reach you. Common types include:</p>
+            <ul>
+              <li>Bank accounts (savings, checking, CDs)</li>
+              <li>Unredeemed money orders or gift cards</li>
+              <li>Uncashed dividend, payroll, or court-ordered checks</li>
+              <li>Estate proceeds and trust distributions</li>
+              <li>Insurance benefits or policies</li>
+              <li>Stocks, bonds, and mutual funds</li>
+              <li>Telephone, utility, or security deposits</li>
+              <li>Customer overpayments and mineral royalty payments</li>
+              <li>Annuities and pension distributions</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)" type="button">
+            What happens if I wait too long to claim my funds?
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-a">
+            <p>In most cases, your funds remain yours regardless of how long they've been held — but it's best to act promptly, as some states impose time limits after property is transferred to the state. Here's how the process works:</p>
+            <p class="process-label">1. Pre-Escheatment <em style="font-weight:400; color: var(--gray-400);">(Est. release: 6–8 weeks)</em></p>
+            <p>Unclaimed property begins as an outstanding account payable. When an organization cannot locate the rightful owner, all 50 states require them to report and transfer the funds to the state — a process called escheatment.</p>
+            <p class="process-label">2. Escheatment</p>
+            <p>The formal transfer of unclaimed property to the state. Accounts with no activity for a defined dormancy period are classified as abandoned or unclaimed.</p>
+            <p class="process-label">3. Post-Escheatment <em style="font-weight:400; color: var(--gray-400);">(Avg. return: 16 weeks)</em></p>
+            <p>After the state takes custody, it may liquidate certain assets and hold the cash equivalent. If your claim is approved, the state reimburses you at the property's value at the time of transfer.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)" type="button">
+            Why should I use MDS Assets Recovery instead of doing it myself?
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-a">
+            <p>Our track record speaks for itself: over <strong>$16 million+ recovered</strong> for more than <strong>2,000 clients</strong> across NY, NJ, MA, FL, PA, CA, and growing. Here's what we bring to the table:</p>
+            <ul>
+              <li><strong>Excellent customer service</strong> — real people who genuinely care about your outcome</li>
+              <li><strong>Constant recovery updates</strong> — you're never left wondering where things stand</li>
+              <li><strong>Full transparency</strong> — no hidden fees, no surprises, ever</li>
+              <li><strong>Custom-built technology</strong> — proprietary tools designed to maximize findings</li>
+              <li><strong>No upfront cost</strong> — you only pay when we successfully recover your property</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)" type="button">
+            Will I need to pay any upfront fees?
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-a">
+            <p>No — never. You pay nothing until we successfully recover your funds.</p>
+            <p>Our commission is clearly outlined in your service agreement, which is signed by both you and MDS Assets Recovery before we begin any work on your behalf. The exact rate is discussed and agreed upon upfront — no surprises.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)" type="button">
+            How will I receive my recovered funds?
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-a">
+            <p>You're in control. Once your claim is approved, you can choose to receive your funds via ACH direct deposit, check, or other available methods — whatever is most convenient for you. We'll walk you through all available options once your recovery is confirmed.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)" type="button">
+            Which states do you operate in?
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-a">
+            <p>We actively recover unclaimed property in <strong>New York, New Jersey, Massachusetts, Florida, Pennsylvania, and California</strong>, with coverage expanding to additional states. If you're unsure whether we can help in your state, reach out — we're happy to let you know.</p>
+            <div class="states-bar" style="margin-top: 0.75rem;">
+              <span class="state-badge" style="font-size: 0.75rem;">NY</span>
+              <span class="state-badge" style="font-size: 0.75rem;">NJ</span>
+              <span class="state-badge" style="font-size: 0.75rem;">MA</span>
+              <span class="state-badge" style="font-size: 0.75rem;">FL</span>
+              <span class="state-badge" style="font-size: 0.75rem;">PA</span>
+              <span class="state-badge" style="font-size: 0.75rem;">CA</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)" type="button">
+            How do I get started?
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-a">
+            <p>Getting started is easy. Simply reach out to us by phone, email, or through our contact form. We'll review your situation, let you know what we find, and walk you through next steps — with zero obligation and no cost to you upfront.</p>
+            <div style="margin-top: 1rem;">
+              <button class="btn-primary" onclick="showPage('contact')" style="background: #020c1e; color: var(--white); font-size: 0.85rem; padding: 0.7rem 1.4rem;">Contact Us Now →</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+  </section>
+
+</div><!-- end support -->
+
+
+<!-- ═══════════════════════════════════════ -->
+<!--  CONTACT PAGE                          -->
+<!-- ═══════════════════════════════════════ -->
+<div id="page-contact" class="page">
+
+  <section style="padding-top: 120px;">
+    <div class="section-inner">
+      <div class="contact-grid">
+
+        <div class="contact-info">
+          <span class="section-eyebrow">Contact Info</span>
+          <h3>Reach Us Any Way You'd Like</h3>
+          <div class="gold-divider"></div>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon">📞</div>
+            <div>
+              <div class="contact-detail-label">Phone</div>
+              <div class="contact-detail-value">(800) 637-5692</div>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon">✉️</div>
+            <div>
+              <div class="contact-detail-label">Email</div>
+              <div class="contact-detail-value">info@mds-recovery.com</div>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon">🗺️</div>
+            <div>
+              <div class="contact-detail-label">States We Serve</div>
+              <div class="contact-detail-value">NY · NJ · MA · FL · PA & growing</div>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon">⏱️</div>
+            <div>
+              <div class="contact-detail-label">Response Time</div>
+              <div class="contact-detail-value">Within one business day</div>
+            </div>
+          </div>
+
+          <div style="margin-top: 1.5rem; padding: 1.25rem; background: #020c1e; border-radius: var(--radius-lg); color: var(--white);">
+            <div style="font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #4a90d9; margin-bottom: 0.5rem;">No Upfront Fees</div>
+    <p style="font-size: 0.88rem; color: rgba(255,255,255,0.72); line-height: 1.7;">Our commission is clearly agreed upon in writing before we begin. You only pay when we successfully recover your funds — no surprises, ever.</p>
+          </div>
+        </div>
+
+        <div>
+          <span class="section-eyebrow">Send a Message</span>
+          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--navy); margin-bottom: 0.75rem;">We'd Love to Help</h3>
+          <div class="gold-divider"></div>
+
+          <div id="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label>First Name</label>
+                <input type="text" id="fname" placeholder="Jane">
+              </div>
+              <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" id="lname" placeholder="Smith">
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" id="email" placeholder="jane@example.com">
+            </div>
+            <div class="form-group">
+              <label>Phone Number</label>
+              <input type="tel" id="phone" placeholder="(555) 000-0000">
+            </div>
+            <div class="form-group">
+              <label>State</label>
+              <select id="state">
+                <option value="">Select your state...</option>
+                <option>New York</option>
+                <option>New Jersey</option>
+                <option>Massachusetts</option>
+                <option>Florida</option>
+                <option>Pennsylvania</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Tell Us About Your Situation</label>
+              <textarea id="message" placeholder="Please let us know what cities you have worked or lived in — this helps us narrow down and locate the correct funds associated with your name."></textarea>
+            </div>
+            <button class="btn-submit" onclick="submitForm()">Send Message →</button>
+          </div>
+
+          <div id="form-success" style="display: none; text-align: center; padding: 3rem 2rem; background: var(--steel-pale); border-radius: var(--radius-lg); border: 1px solid var(--gray-200);">
+            <div style="font-size: 2.5rem; margin-bottom: 1rem;">✅</div>
+            <h3 style="font-size: 1.3rem; margin-bottom: 0.75rem;">Message Received!</h3>
+            <p style="color: var(--text-muted); font-size: 0.93rem; line-height: 1.75;">Thank you for reaching out. A member of our team will be in touch within one business day.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</div><!-- end contact -->
+
+
+<!-- ═══════════════════════════════════════ -->
+<!--  FOOTER (shared)                       -->
+<!-- ═══════════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="nav-logo" href="javascript:void(0)" onclick="showPage('home')" style="display:flex;align-items:center;gap:0.75rem;cursor:pointer;"><img src="data:image/jpeg;base64,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" alt="MDS Assets Recovery" style="height:54px;width:54px;object-fit:cover;border-radius:50%;border:2px solid rgba(90,159,212,0.4);"><span style="font-family:Playfair Display,serif;font-size:1.1rem;font-weight:700;color:#fff;">MDS <span style="color:#4a90d9;">Assets Recovery</span></span></a>
+        <p class="footer-tagline">MDS Assets Recovery helps individuals and businesses reclaim unclaimed property with transparency, expertise, and no upfront fees. Over $16 million+ recovered. 2,000+ clients served.</p>
+        <div class="footer-states">
+          <span class="footer-state">NY</span>
+          <span class="footer-state">NJ</span>
+          <span class="footer-state">MA</span>
+          <span class="footer-state">FL</span>
+          <span class="footer-state">PA</span>
+          <span class="footer-state">CA</span>
+          <span class="footer-state">+ More</span>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="javascript:void(0)" onclick="showPage('home')">Home</a></li>
+          <li><a href="javascript:void(0)" onclick="showPage('about')">About Us</a></li>
+          <li><a href="javascript:void(0)" onclick="showPage('contact')">Partner With Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="javascript:void(0)" onclick="showPage('support')">FAQ & Support</a></li>
+          <li><a href="javascript:void(0)" onclick="showPage('about')">How We Help</a></li>
+          <li><a href="https://www.linkedin.com/company/mdsassetsrecovery/" target="_blank">LinkedIn</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:8006375692">(800) 637-5692</a></li>
+          <li><a href="mailto:info@mds-recovery.com">info@mds-recovery.com</a></li>
+          <li><a href="javascript:void(0)" onclick="showPage('contact')">Send a Message</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 MDS Assets Recovery. All rights reserved.</span>
+      <span>No upfront fees · Commission-based · You pay only on success</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function showPage(name) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    var target = document.getElementById('page-' + name);
+    if (target) {
+      target.classList.add('active');
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    closeMenu();
+  }
+
+  function toggleMenu() {
+    const menu = document.getElementById('nav-menu');
+    if (menu) menu.classList.toggle('open');
+  }
+
+  function closeMenu() {
+    const menu = document.getElementById('nav-menu');
+    if (menu) menu.classList.remove('open');
+  }
+
+  // Ensure all buttons with onclick work on mobile touch
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('[onclick]').forEach(function(el) {
+      el.addEventListener('touchend', function(e) {
+        e.preventDefault();
+        var fn = el.getAttribute('onclick');
+        if (fn) eval(fn);
+      }, { passive: false });
+    });
+  });
+
+  function toggleFaq(el) {
+    const item = el.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  }
+
+  function submitForm() {
+    const fname = document.getElementById('fname').value.trim();
+    const lname = document.getElementById('lname').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const state = document.getElementById('state').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    if (!fname || !email) {
+      alert('Please fill in at least your name and email address.');
+      return;
+    }
+
+    const subject = encodeURIComponent('New Recovery Inquiry from ' + fname + ' ' + lname);
+    const body = encodeURIComponent(
+      'Name: ' + fname + ' ' + lname + '\n' +
+      'Email: ' + email + '\n' +
+      'Phone: ' + phone + '\n' +
+      'State: ' + state + '\n\n' +
+      'Cities Worked/Lived In:\n' + message
+    );
+
+    window.location.href = 'mailto:info@mds-recovery.com?subject=' + subject + '&body=' + body;
+
+    setTimeout(function() {
+      document.getElementById('contact-form').style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+    }, 1000);
+  }
+
+  // Scroll nav behavior
+  const noticeBanner = document.querySelector('.no-fee-banner');
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    const bannerH = noticeBanner.offsetHeight;
+    if (window.scrollY > bannerH) {
+      nav.style.top = '0';
+    } else {
+      nav.style.top = (bannerH - window.scrollY) + 'px';
+    }
+  });
+</script>
+
+
+
+
+
+
+<div id="sticky-cta" style="display:none; position:fixed; bottom:0; left:0; right:0; z-index:200; background:linear-gradient(90deg,#020c1e,#05112a); border-top:1px solid rgba(255,255,255,0.15); padding:0.85rem 1.25rem; text-align:center;">
+  <button onclick="showPage('contact')" style="background:#ffffff; color:#05112a; font-family:'DM Sans',sans-serif; font-weight:700; font-size:0.9rem; border:none; border-radius:4px; padding:0.75rem 2rem; cursor:pointer; width:100%; max-width:400px;">Start Your Free Recovery Search →</button>
+</div>
+<style>@media(max-width:768px){#sticky-cta{display:block !important;}}</style>
+
+
+<script>
+  function animateCountUp() {
+    document.querySelectorAll('.count-up').forEach(el => {
+      if (el.dataset.animated) return;
+      el.dataset.animated = true;
+      const target = parseFloat(el.dataset.target);
+      const prefix = el.dataset.prefix || '';
+      const suffix = el.dataset.suffix || '';
+      let step = 0, steps = 60;
+      const timer = setInterval(() => {
+        step++;
+        const current = Math.min((target / steps) * step, target);
+        el.textContent = prefix + (Number.isInteger(target) ? Math.floor(current).toLocaleString() : current.toFixed(0)) + suffix;
+        if (step >= steps) { clearInterval(timer); el.textContent = prefix + (Number.isInteger(target) ? target.toLocaleString() : target) + suffix; }
+      }, 2000 / 60);
+    });
+  }
+
+  // Set final values immediately so they're never stuck at zero
+  function setFinalValues() {
+    document.querySelectorAll('.count-up').forEach(el => {
+      const target = parseFloat(el.dataset.target);
+      const prefix = el.dataset.prefix || '';
+      const suffix = el.dataset.suffix || '';
+      el.textContent = prefix + (Number.isInteger(target) ? target.toLocaleString() : target) + suffix;
+    });
+  }
+
+  // Try IntersectionObserver for animation; fallback to static values
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { animateCountUp(); obs.disconnect(); } });
+    }, { threshold: 0.2 });
+    const el = document.querySelector('.count-up');
+    if (el) obs.observe(el.closest('div'));
+    // Safety fallback — if not triggered within 3s, set final values
+    setTimeout(() => { setFinalValues(); }, 3000);
+  } else {
+    setFinalValues();
+  }
+</script>
 
 </body>
 </html>
